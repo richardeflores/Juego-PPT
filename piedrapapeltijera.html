@@ -4,9 +4,15 @@
         <meta charset="uft-8"/>
         <title>Piedra, Papel o Tijeras</title>
         <script>
+            //Obtener numero aleatorio pc
+            function aleatorio (min,max){
+                return Math.floor(Math.random()*(max -min +1)+min)
+            }
+            
+
             //1 papel, 2 es papel, 3 es tijera
             let jugador = 0 
-            let pc = 2
+            let pc=aleatorio(1,3)
             jugador = prompt ("Elige: 1 para piedra, 2 para papel, 3 para tijera")
             //alert ("Elegiste "+ jugador)
             if (jugador == 1) {
