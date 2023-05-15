@@ -134,8 +134,24 @@ function combate () {
         spanVidasJugador.innerHTML = vidasJugador
       }
 
+      revisarVidas()
+
 }
 
+function revisarVidas() {
+    if (vidasEnemigo==0){
+        crearMensajeFinal ('Felicitaciones, Ganaste la partida')
+    } else if (vidasJugador==0){
+        crearMensajeFinal ('Mejor suerte para la próxima, perdiste la partida')
+    } 
+}
+
+function crearMensajeFinal(resultadoFinal) {
+    let sectionMensajes = document.getElementById ('mensajes')
+    let parrafo = document.createElement ('p')
+    parrafo.innerHTML= resultadoFinal
+    sectionMensajes.appendChild(parrafo)
+}
 
 function crearMensaje(resultado) {
     let sectionMensajes = document.getElementById ('mensajes')
