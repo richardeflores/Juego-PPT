@@ -48,6 +48,7 @@ color: white;
     border: 2px solid white;
     font-family: 'Poppins', sans-serif;
     margin-top: 30px;
+    color: white;
 }
 
 .tarjeta-mokepon img {
@@ -57,3 +58,19 @@ color: white;
 input {
     display: none;
   }
+
+#seleccionar-ataque{
+    flex-direction: column;
+    align-items: center;
+}
+
+.boton-ataque {
+    background-color: #146C94;
+    border-radius: 20px;
+    box-sizing: border-box;
+    color: white;
+    width: 120px;
+    border-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size:20px;
+}
