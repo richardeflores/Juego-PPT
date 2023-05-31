@@ -94,3 +94,10 @@ input {
     width: 180px;
     font-family: 'Poppins', sans-serif;
 }
+
+.ataques {
+    display: grid;
+    grid-template-columns: 100px 100px;
+    text-align: center;
+    color: white;
+}
