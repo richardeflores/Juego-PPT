@@ -58,6 +58,9 @@ color: white;
 input {
     display: none;
   }
+input:checked + label {
+    background-color: rgb(10, 26, 105);
+}
 
 #seleccionar-ataque{
     flex-direction: column;
