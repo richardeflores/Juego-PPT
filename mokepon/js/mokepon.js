@@ -39,9 +39,12 @@ class Mokepon {
     }
 }
 
+let mokepones = []
 let hipodoge = new Mokepon ('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.webp',3)
 let capipepo = new Mokepon ('Capipepo','./assets/mokepons_mokepon_capipepo_attack.webp', 3)
 let ratigueya = new Mokepon ('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.webp', 3)
+
+mokepones.push(hipodoge, capipepo, ratigueya)
 
 function iniciarJuego(){
    
