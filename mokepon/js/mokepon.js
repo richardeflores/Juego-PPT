@@ -7,11 +7,6 @@ const botonFuego = document.getElementById('boton-fuego')
 const botonAgua = document.getElementById('boton-agua')
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-const inputHipodoge = document.getElementById('hipodoge')
-const inputCapipepo = document.getElementById('capipepo')
-const inputRatigueya = document.getElementById('ratigueya')
-const inputLangostelvis = document.getElementById('langostelvis')
-const inputTucapalma = document.getElementById('tucapalma')
 const inputPydos = document.getElementById('pydos')
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 
@@ -30,6 +25,11 @@ let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
 let opcionDeMokepones
+let inputHipodoge
+let inputCapipepo
+let inputRatigueya
+let inputLangostelvis
+let inputTucapalma
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -82,7 +82,14 @@ function iniciarJuego(){
             <p>${mokepon.nombre}</p>
             <img src=${mokepon.foto} alt="${mokepon.nombre}">
         </label>`
-contenedorTarjetas.innerHTML += opcionDeMokepones
+
+    contenedorTarjetas.innerHTML += opcionDeMokepones
+
+    inputHipodoge = document.getElementById('Hipodoge')
+    inputCapipepo = document.getElementById('Capipepo')
+    inputRatigueya = document.getElementById('Ratigueya')
+    inputLangostelvis = document.getElementById('Langostelvis')
+    inputTucapalma = document.getElementById('Tucapalma')
     })
 
     sectionReiniciar.style.display='none'
@@ -98,12 +105,8 @@ contenedorTarjetas.innerHTML += opcionDeMokepones
 function seleccionarMascotaJugador(){
     
     sectionSeleccionarAtaque.style.display='flex'
-
     
     sectionSeleccionarMascota.style.display='none'
-
-    
-
 
     if (inputHipodoge.checked){
         spanMascotaJugador.innerHTML = 'Hipodoge'
@@ -156,19 +159,16 @@ function seleccionarMascotaEnemigo(){
 function ataqueFuego() {
     ataqueJugador = 'Fuego'
     ataqueAleatorioEnemigo ()
-    
 } 
 
 function ataqueAgua() {
     ataqueJugador = 'Agua'
     ataqueAleatorioEnemigo ()
-    
 } 
 
 function ataqueTierra() {
     ataqueJugador = 'Tierra'
-    ataqueAleatorioEnemigo ()
-    
+    ataqueAleatorioEnemigo () 
 } 
 
 function ataqueAleatorioEnemigo (){
@@ -181,7 +181,6 @@ function ataqueAleatorioEnemigo (){
     }else {
         ataqueEnemigo = 'Tierra'
     }
-
     combate()
 }
 
