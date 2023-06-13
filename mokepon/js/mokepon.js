@@ -30,6 +30,7 @@ let ataquesMokepon
 let botonTierra
 let botonFuego
 let botonAgua
+let botones= []
 let inputLangostelvis
 let inputTucapalma
 let inputPydos
@@ -154,17 +155,26 @@ function extraerAtaques (mascotaJugador) {
 function mostrarAtaques(ataques){
     ataques.forEach((ataque)=>{
         ataquesMokepon= `
-        <button id=${ataque.id} class="boton-ataque">${ataque.nombre}</button>
+        <button id=${ataque.id} class="boton-ataque BAtaque">${ataque.nombre}</button>
         `
         botonesAtaque.innerHTML += ataquesMokepon
     })
     botonTierra = document.getElementById('boton-tierra')
     botonFuego = document.getElementById('boton-fuego')
     botonAgua = document.getElementById('boton-agua')
+    botones = document.querySelectorAll('.BAtaque')
 
     botonFuego.addEventListener('click', ataqueFuego)
     botonAgua.addEventListener('click', ataqueAgua)
     botonTierra.addEventListener('click', ataqueTierra)
+}
+
+function secuenciaAtaque() {
+    botones.forEach((boton) =>{
+        boton.addEventListener('click', (e)=> {
+            console.log(e)
+        })
+    })
 }
 
 function seleccionarMascotaEnemigo(){
