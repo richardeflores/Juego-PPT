@@ -1,10 +1,7 @@
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById ('reiniciar')
 const botonMascota = document.getElementById('boton-mascota')
-const botonTierra = document.getElementById('boton-tierra')
 const botonReiniciar = document.getElementById('boton-reiniciar')
-const botonFuego = document.getElementById('boton-fuego')
-const botonAgua = document.getElementById('boton-agua')
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
 const spanMascotaJugador = document.getElementById('mascota-jugador')
@@ -19,6 +16,7 @@ const ataquesDelJugador = document.getElementById ('ataques-del-jugador')
 
 const ataquesDelEnemigo = document.getElementById ('ataques-del-enemigo')
 const contenedorTarjetas = document.getElementById ('contenedor-tarjetas')
+const botonesAtaque = document.getElementById('botones-ataque')
 
 let mokepones = []
 let ataqueJugador
@@ -28,6 +26,10 @@ let inputHipodoge
 let inputCapipepo
 let inputRatigueya
 let mascotaJugador
+let ataquesMokepon
+let botonTierra
+let botonFuego
+let botonAgua
 let inputLangostelvis
 let inputTucapalma
 let inputPydos
@@ -95,9 +97,6 @@ function iniciarJuego(){
 
     sectionReiniciar.style.display='none'
     botonMascota.addEventListener('click', seleccionarMascotaJugador)
-    botonFuego.addEventListener('click', ataqueFuego)
-    botonAgua.addEventListener('click', ataqueAgua)
-    botonTierra.addEventListener('click', ataqueTierra)
 
    
         botonReiniciar.addEventListener('click', reiniciarJuego)
@@ -150,6 +149,22 @@ function extraerAtaques (mascotaJugador) {
     }
     mostrarAtaques(ataques) 
     
+}
+
+function mostrarAtaques(ataques){
+    ataques.forEach((ataque)=>{
+        ataquesMokepon= `
+        <button id=${ataque.id} class="boton-ataque">${ataque.nombre}</button>
+        `
+        botonesAtaque.innerHTML += ataquesMokepon
+    })
+    botonTierra = document.getElementById('boton-tierra')
+    botonFuego = document.getElementById('boton-fuego')
+    botonAgua = document.getElementById('boton-agua')
+
+    botonFuego.addEventListener('click', ataqueFuego)
+    botonAgua.addEventListener('click', ataqueAgua)
+    botonTierra.addEventListener('click', ataqueTierra)
 }
 
 function seleccionarMascotaEnemigo(){
