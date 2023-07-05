@@ -109,9 +109,31 @@ ratigueya.ataques.push(
     {nombre: '💧', id: 'boton-agua'},
     {nombre: '🌱', id: 'boton-tierra'},
 )
+
+hipodogeEnemigo.ataques.push(
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🌱', id: 'boton-tierra'},
+)
+
+capipepoEnemigo.ataques.push(
+    {nombre: '🌱', id: 'boton-tierra'},
+    {nombre: '🌱', id: 'boton-tierra'},
+    {nombre: '🌱', id: 'boton-tierra'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '💧', id: 'boton-agua'},
+)
+
+ratigueyaEnemigo.ataques.push(
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🌱', id: 'boton-tierra'},
+)
 mokepones.push(hipodoge, capipepo, ratigueya)
-
-
 function iniciarJuego(){
    
     sectionSeleccionarAtaque.style.display='none'
@@ -140,8 +162,6 @@ function iniciarJuego(){
 }
 
 function seleccionarMascotaJugador(){
-    
-    sectionSeleccionarAtaque.style.display='flex'
     
     sectionSeleccionarMascota.style.display='none'
 
@@ -175,7 +195,6 @@ function seleccionarMascotaJugador(){
     extraerAtaques (mascotaJugador)
     sectionVerMapa.style.display='flex'
     iniciarMapa()
-    seleccionarMascotaEnemigo ()
 }
 
 function extraerAtaques (mascotaJugador) {
@@ -425,7 +444,10 @@ function revisarColision(enemigo){
     }
     
     detenerMovimiento()
-    alert('Hay colisión con '+enemigo.nombre)
+    clearInterval(intervalo)
+    sectionSeleccionarAtaque.style.display='flex'
+    sectionVerMapa.style.display='none'
+    seleccionarMascotaEnemigo (enemigo)
 }
 
 window.addEventListener('load', iniciarJuego)
