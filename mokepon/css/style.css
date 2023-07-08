@@ -117,8 +117,19 @@ input:checked + label {
     justify-content: center;
 }
 
+#ver-mapa button {
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    background: transparent;
+    border: 2px solid white;
+    font-family: 'Poppins', sans-serif;
+    margin: 10px 0;
+    color: white;
+}
 
-@media (max-width: 360px) {
+
+@media (max-width: 560px) {
     .tarjetas {
         flex-direction: column;
     }
@@ -131,3 +142,10 @@ input:checked + label {
         margin-top: 10px;
     }
 }
+    @media (max-width: 300px) {
+    #ver-mapa div{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+        }
