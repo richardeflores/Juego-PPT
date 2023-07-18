@@ -151,7 +151,7 @@ function iniciarJuego(){
 }
 
 function unirseAlJuego() {
-    fetch("http://localhost:8080/unirse")
+    fetch("http://192.168.1.38:8080/unirse")
         .then(function(res) {
             console.log(res)
             if (res.ok){
@@ -165,8 +165,6 @@ function unirseAlJuego() {
 }
 
 function seleccionarMascotaJugador(){
-    
-    sectionSeleccionarMascota.style.display='none'
 
     if (inputHipodoge.checked){
         spanMascotaJugador.innerHTML = inputHipodoge.id
@@ -194,10 +192,13 @@ function seleccionarMascotaJugador(){
     }
     else {
         alert('Debes elegir una mascota')
+        return
     }
 
+    sectionSeleccionarMascota.style.display='none'
+
     function seleccionarMokepon(mascotaJugador){
-        fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
+        fetch(`http://192.168.1.38:8080/mokepon/${jugadorId}`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -267,7 +268,7 @@ function secuenciaAtaque() {
 }
 
 function enviarAtaques (){
-    fetch(`http://localhost:8080/mokepon/${jugadorId}/ataques`, {
+    fetch(`http://192.168.1.38:8080/mokepon/${jugadorId}/ataques`, {
         method:"post",
         headers: {
             "Content-Type": "application/json"
@@ -281,7 +282,7 @@ function enviarAtaques (){
 }
 
 function obtenerAtaques() {
-    fetch(`http://localhost:8080/mokepon/${enemigoId}/ataques`)
+    fetch(`http://192.168.1.38:8080/mokepon/${enemigoId}/ataques`)
     .then((res)=>{
         if(res.ok){
             res.json()
@@ -402,16 +403,16 @@ function pintarCanvas() {
     enviarPosicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y)
 
     mokeponesEnemigos.forEach(function (mokepon)
-        {
-            if(mokepon != undefined){
-                mokepon.pintarMokepon()
-                revisarColision(mokepon)
-            }
-        })
+    {
+        if(mokepon != undefined){
+            mokepon.pintarMokepon()
+            revisarColision(mokepon)
+        }
+    })
 }
 
 function enviarPosicion(x,y) {
-    fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`,{
+    fetch(`http://192.168.1.38:8080/mokepon/${jugadorId}/posicion`,{
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -426,9 +427,11 @@ function enviarPosicion(x,y) {
             res.json()
                 .then(function({enemigos}){
                     console.log(enemigos)
-                   mokeponesEnemigos= enemigos.map(function(enemigo){
-                        let mokeponEnemigo = null
-                        if (enemigo.mokepon!=undefined){
+                    mokeponesEnemigos = enemigos.map(function (enemigo)
+                    {
+                        let mokeponEnmigo = null
+                        if(enemigo.mokepon != undefined)
+                        {
                             const mokeponNombre = enemigo.mokepon.nombre 
                             switch (mokeponNombre)
                             {
@@ -444,11 +447,11 @@ function enviarPosicion(x,y) {
                                 default:
                                     break
                             }
-                        }    
-
-                        mokeponEnemigo.x=enemigo.x
-                        mokeponEnemigo.y=enemigo.y
-                        return mokeponEnemigo
+    
+                            mokeponEnemigo.x = enemigo.x
+                            mokeponEnemigo.y = enemigo.y
+                        }
+                            return mokeponEnemigo
                     })
                 })  
         }
@@ -527,7 +530,9 @@ function revisarColision(enemigo){
     const izquierdaMascota = 
         mascotaJugadorObjeto.x
 
-
+        if(enemigo.x == undefined || enemigo.y == undefined){
+            return
+        }
 
     if (
         abajoMascota < arribaEnemigo || 
